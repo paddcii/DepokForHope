@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Depok Run for Hope 2027 – Lari untuk Sesama</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
+
+<!-- =====================================================================
+  STRUKTUR FILE (taruh dalam 1 folder yang sama)
+  1) index.html : struktur halaman (file ini)
+  2) style.css  : tampilan. Warna ada di ":root" (paling atas).
+  3) script.js  : interaksi. Tanggal, harga, kuota, benefit tiap kategori
+                  ada di objek CONFIG.
+  ===================================================================== -->
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav id="nav"><div class="wrap">
+  <a class="logo" href="#top">Depok Run <span>for Hope</span></a>
+  <div class="menu">
+    <a href="#misi">Misi</a><a href="#tiket">Tiket</a><a href="#benefit">Benefit</a><a href="#faq">FAQ</a>
+    <a class="btn btn-green" href="#tiket">Beli Tiket</a>
+  </div>
+</div></nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero" id="top">
+<div class="floaters" aria-hidden="true">
+  <span style="left:6%;top:30%;--d:0s">👟</span><span style="left:90%;top:20%;--d:-2s">🏅</span>
+  <span style="left:12%;top:66%;--d:-4s">💜</span><span style="left:84%;top:60%;--d:-1s">💚</span>
+  <span style="left:3%;top:48%;--d:-3s">⭐</span><span style="left:94%;top:42%;--d:-5s">🔥</span>
+  <span style="left:24%;top:16%;--d:-2.5s">🎽</span><span style="left:72%;top:12%;--d:-4.5s">💧</span>
+</div>
+<div class="wrap">
+  <div class="tags">
+    <span class="sticker tag-a">📍 Depok, Jawa Barat</span>
+    <span class="sticker tag-b" id="heroDate">14 Maret 2027</span>
+  </div>
+  <h1>Lari Untuk <em>Sesama</em></h1>
+  <p class="lead">Setiap langkahmu jadi bantuan nyata. <b>100% hasil penjualan tiket</b> disalurkan untuk korban bencana alam: kebakaran hutan, gempa bumi, dan bencana lain yang sedang terjadi.</p>
+  <a class="btn btn-green" href="#tiket">Pilih Kategori Lari</a>
+  <div class="count" id="countdown"></div>
+  <small>Menuju garis start</small>
+</div>
+<div class="track" aria-hidden="true"><span class="runner">🏃</span><span class="runner">🏃‍♀️</span><span class="runner">🏃‍♂️</span><span class="runner">🏃‍♀️</span><span class="finish">🏁</span></div>
+</header>
+
+<div class="marquee" aria-hidden="true"><div id="marquee"></div></div>
+
+<!-- ================= MISI & DONASI ================= -->
+<section id="misi"><div class="wrap">
+  <div class="mission">
+    <div class="reveal">
+      <h2>Tiketmu adalah donasi</h2>
+      <p style="margin-top:14px">Seluruh uang pendaftaran, tanpa potongan, dikumpulkan dan diserahkan kepada lembaga penyalur bantuan untuk korban bencana. Biaya penyelenggaraan ditanggung sponsor dan mitra.</p>
+      <div class="cause-list">
+        <div class="cause"><span>🔥</span><div><b>Kebakaran hutan dan lahan</b><br>Logistik, masker, dan layanan kesehatan warga terdampak.</div></div>
+        <div class="cause"><span>🌍</span><div><b>Gempa bumi</b><br>Tenda darurat, makanan, dan pemulihan tempat tinggal.</div></div>
+        <div class="cause"><span>🌊</span><div><b>Bencana lain yang sedang terjadi</b><br>Dana dialokasikan ke bencana paling mendesak saat event berlangsung.</div></div>
+      </div>
+    </div>
+    <div class="fund reveal">
+      <h3>Dana terkumpul</h3>
+      <div class="big" id="raised">Rp 0</div>
+      <div class="bar"><i id="fundBar"></i></div>
+      <small id="fundNote"></small>
+    </div>
+  </div>
+  <div class="stats">
+    <div class="stat reveal"><b data-count="100" data-suffix="%">0</b><br>hasil tiket untuk donasi</div>
+    <div class="stat reveal"><b id="sPeserta" data-count="0">0</b><br>pelari sudah terdaftar</div>
+    <div class="stat reveal"><b data-count="4">0</b><br>kategori jarak</div>
+    <div class="stat reveal"><b data-count="1">0</b><br>tujuan: saling membantu</div>
+  </div>
+</div></section>
+
+<!-- ================= KATEGORI & TIKET ================= -->
+<section id="tiket"><div class="wrap">
+  <h2 class="reveal">Pilih jarakmu</h2>
+  <p class="reveal" style="margin-top:12px">Dari lari santai bersama keluarga sampai full marathon. Semua tiket sama-sama berarti.</p>
+  <div class="cats" id="cats"></div>
+</div></section>
+
+<!-- ================= BENEFIT UMUM ================= -->
+<section id="benefit"><div class="wrap">
+  <h2 class="reveal">Yang kamu dapat di semua kategori</h2>
+  <div class="benefits">
+    <div class="benefit reveal"><span>🏅</span><b>Medali finisher</b><br>Untuk setiap pelari yang menyentuh garis finis.</div>
+    <div class="benefit reveal"><span>📜</span><b>Sertifikat digital</b><br>Berisi waktu lari dan jumlah donasimu.</div>
+    <div class="benefit reveal"><span>🎽</span><b>Race kit</b><br>Nomor dada, goodie bag, dan jersey event.</div>
+    <div class="benefit reveal"><span>💧</span><b>Water station</b><br>Air, isotonik, dan buah di sepanjang rute.</div>
+    <div class="benefit reveal"><span>🩺</span><b>Tim medis</b><br>Petugas medis dan ambulans siaga di rute.</div>
+    <div class="benefit reveal"><span>🎶</span><b>Festival garis finis</b><br>Musik, zumba, dan stan UMKM Depok.</div>
+    <div class="benefit reveal"><span>🛡️</span><b>Asuransi pelari</b><br>Perlindungan kecelakaan selama event berlangsung.</div>
+    <div class="benefit reveal"><span>🎒</span><b>Penitipan barang</b><br>Titip tas dan barang berhargamu dengan aman selama berlari.</div>
+  </div>
+</div></section>
+
+<!-- ================= JADWAL ================= -->
+<section id="jadwal"><div class="wrap">
+  <h2 class="reveal">Hari H</h2>
+  <div class="timeline reveal" id="timeline"></div>
+</div></section>
+
+<!-- ================= FAQ ================= -->
+<section id="faq"><div class="wrap" style="max-width:760px">
+  <h2 class="reveal">Pertanyaan umum</h2>
+  <details open><summary>Apakah benar 100% harga tiket didonasikan? Bagaimana alurnya?</summary><p>Ya. Seluruh nilai tiket yang terjual, tanpa potongan, masuk ke rekening khusus donasi. Biaya operasional seperti perizinan, medis, keamanan, medali, dan jersey ditanggung sponsor dan mitra, jadi tidak diambil dari tiket. Setelah event, panitia akan menyerahkan dana ke lembaga penyalur bantuan untuk korban bencana yang paling mendesak saat itu (misalnya karhutla atau gempa bumi). Rincian total donasi, bukti serah terima, dan dokumentasinya akan dipublikasikan di website ini dan media sosial panitia.</p></details>
+  <details><summary>Bagaimana cara mengambil race kit?</summary><p>Setelah pembayaran berhasil, kode pemesanan dikirim ke email dan WhatsApp-mu. Race kit (nomor dada, jersey, goodie bag, dan chip timing untuk kategori yang mendapat chip) diambil sehari sebelum event di lokasi yang diumumkan panitia. Bawa kode pemesanan dan kartu identitas (KTP, SIM, atau kartu pelajar). Jika diwakilkan, bawa surat kuasa bermaterai atau pesan persetujuan dari pemilik tiket, beserta fotokopi identitasnya. Race kit tidak dibagikan di hari H.</p></details>
+  <details><summary>Bagaimana kalau ukuran jersey tidak cocok?</summary><p>Pilih ukuran dengan teliti saat mendaftar, karena jersey diproduksi sesuai pesanan. Tabel ukuran akan dibagikan di media sosial panitia. Penukaran ukuran bisa dilakukan saat pengambilan race kit selama stok masih tersedia, tapi tidak dijamin untuk semua ukuran.</p></details>
+  <details><summary>Bisa refund, pindah kategori, atau pindah nama?</summary><p>Karena tiket berupa donasi, uang tidak dapat dikembalikan. Pindah kategori dapat diajukan ke panitia sampai batas waktu yang diumumkan, dengan selisih harga dibayar jika naik kategori. Pindah nama ke orang lain juga bisa dengan mengirim data peserta baru sebelum pengambilan race kit. Kalau kamu berhalangan hadir, donasimu tetap sampai ke penerima.</p></details>
+  <details><summary>Berapa batas waktu (COT) tiap kategori?</summary><p>5K dan 10K: 2 jam. 21K: 3,5 jam. 42K: 7 jam. Pelari yang melewati batas waktu atau titik cut-off di tengah rute akan diarahkan naik ke kendaraan sapu (sweeper) demi keselamatan, tapi tetap diberi apresiasi sebagai peserta.</p></details>
+  <details><summary>Apa syarat usia dan kesiapan fisik peserta?</summary><p>Usia minimal yang disarankan: 5K usia 10 tahun ke atas, 10K usia 15 tahun, 21K usia 18 tahun, dan 42K usia 18 tahun. Peserta di bawah 18 tahun wajib didampingi atau mendapat izin orang tua. Pastikan kamu sehat dan sudah latihan rutin, terutama untuk 21K dan 42K. Kalau punya riwayat jantung, asma, atau kondisi lain, konsultasikan ke dokter dulu. Peserta bertanggung jawab atas kondisi kesehatannya sendiri.</p></details>
+  <details><summary>Bagaimana rute, transportasi, dan parkirnya?</summary><p>Rute melintasi jalan utama Depok dan ditutup untuk kendaraan umum selama lomba berlangsung. Peta rute lengkap akan dirilis sebelum hari H. Disarankan datang naik KRL, ojek online, atau diantar. Kalau membawa kendaraan sendiri, parkir disediakan di area yang ditentukan panitia dengan kapasitas terbatas. Datanglah minimal 45 menit sebelum start agar sempat penitipan barang dan pemanasan.</p></details>
+  <details><summary>Fasilitas apa saja yang ada di sepanjang rute?</summary><p>Water station berisi air mineral dan isotonik tersedia kira-kira setiap 2,5 km, ditambah buah dan garam di titik tertentu untuk 21K dan 42K. Ada tim medis, ambulans siaga, dan relawan di titik rawan. Toilet tersedia di area start/finish dan beberapa titik rute.</p></details>
+  <details><summary>Bagaimana kalau hujan, cuaca buruk, atau ada keadaan darurat?</summary><p>Event tetap berjalan saat hujan ringan, jadi siapkan jas hujan tipis atau pakaian cepat kering. Kalau cuaca ekstrem atau kondisi darurat membahayakan peserta, panitia bisa menunda atau membatalkan event. Informasi resmi diumumkan lewat website dan media sosial panitia. Dana tiket yang sudah terkumpul tetap disalurkan sesuai misi donasi.</p></details>
+  </div></section>
+
+<!-- ================= FOOTER ================= -->
+<footer><div class="wrap">
+  <h2>Siap berlari untuk mereka?</h2>
+  <a class="btn btn-green" href="#tiket">Beli Tiket Sekarang</a>
+  <small>© 2027 Depok Run for Hope · @paddcii</small>
+</div></footer>
+
+<!-- ================= MODAL PEMESANAN ================= -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle"><div class="box" id="box"></div></div>
+
+<script src="/js/script.js"></script>
+</body>
+</html>
